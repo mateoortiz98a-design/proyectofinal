@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { getContacts } from "../services/contactsService";
+import { getContacts } from "../Services/contactsService";
 
 //Creamos el contexto y lo exportamos porque luego quien
 //quiera consumirlo lo va a necesitar

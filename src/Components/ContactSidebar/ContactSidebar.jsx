@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { getContacts } from '../../services/contactsService'
+import { getContacts } from '../../Services/contactsService'
 import { ContactsContext } from '../../Context/ContactsContext'
 import { Link } from 'react-router'
 

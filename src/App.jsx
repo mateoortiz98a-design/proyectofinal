@@ -3,8 +3,9 @@ import { Route, Routes } from 'react-router'
 import HomeScreen from './Screens/HomeScreen/HomeScreen'
 import ContactScreen from './Screens/ContactScreen/ContactScreen'
 import ErrorNotFoundScreen from './Screens/ErrorNotFoundScreen/ErrorNotFoundScreen'
-import { getContacts } from './services/contactsService'
+import { getContacts } from './Services/contactsService'
 import ContactsContextProvider from './Context/ContactsContext'
+import ContactSidebar from './Components/ContactSidebar/ContactSidebar'
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
                         path='/'
                         element={
 
-                            <HomeScreen  />
+                            <HomeScreen />
 
                         }
                     />
