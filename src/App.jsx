@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router'
 import HomeScreen from './Screens/HomeScreen/HomeScreen'
 import ContactScreen from './Screens/ContactScreen/ContactScreen'
 import ErrorNotFoundScreen from './Screens/ErrorNotFoundScreen/ErrorNotFoundScreen'
-import { getContacts } from './Services/contactsService'
+import { getContacts } from './Services/contactsService.js'
 import ContactsContextProvider from './Context/ContactsContext'
 import ContactSidebar from './Components/ContactSidebar/ContactSidebar'
 

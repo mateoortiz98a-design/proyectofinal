@@ -32,7 +32,7 @@ export default function ContactScreen() {
                   <div key={message.id}>
                     {
                       message.send_by_me
-                      ? <h3>Enviado mi</h3>
+                      ? <h3>enviado por mi</h3>
                       : <h3>Enviado por: {contact_selected.name}</h3>
                     }
                     <p>{message.text}</p>
