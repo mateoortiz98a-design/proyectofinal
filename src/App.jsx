@@ -3,10 +3,11 @@ import { Route, Routes } from 'react-router'
 import HomeScreen from './Screens/HomeScreen/HomeScreen'
 import ContactScreen from './Screens/ContactScreen/ContactScreen'
 import ErrorNotFoundScreen from './Screens/ErrorNotFoundScreen/ErrorNotFoundScreen'
-import { getContacts } from './Services/contactsService.js'
+import { getContacts } from './Services/contactService.js'
 import ContactsContextProvider from './Context/ContactsContext'
 import ContactSidebar from './Components/ContactSidebar/ContactSidebar'
-
+import InfoContact from './Components/InfoContact/infoContact.jsx'
+import contacts from './data/contactData.js'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <div>
             <ContactsContextProvider >
                 <Routes>
+                    
                     <Route
                         path='/'
                         element={
@@ -32,7 +34,7 @@ function App() {
                         path='*'
                         element={<ErrorNotFoundScreen />}
                     />
-                </Routes>
+              </Routes>
             </ContactsContextProvider>
         </div>
     )

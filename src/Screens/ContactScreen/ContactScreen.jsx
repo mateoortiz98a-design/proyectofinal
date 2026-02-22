@@ -1,54 +1,71 @@
 import React, { useContext } from 'react'
 import ContactSidebar from '../../Components/ContactSidebar/ContactSidebar'
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 import { ContactsContext } from '../../Context/ContactsContext'
+import './ContactScreen.css'
+import { useState } from 'react'
+import InfoContact from '../../Components/InfoContact/infoContact'
 
 export default function ContactScreen() {
-  const {contacts} = useContext(ContactsContext)
+  const { contacts } = useContext(ContactsContext)
 
-  //Obtengo el id del contacto seleccionado a traves de los parametros de la url
-  const {contact_id} = useParams()
+  const [showInfo, setShowInfo] = useState(false)
+  const { contact_id } = useParams()
 
-  //Busco el contacto seleccionado en la lista de contactos
+
   const contact_selected = contacts.find(contact => Number(contact.id) === Number(contact_id))
 
   return (
-    <div>
+    <div className='home_screen'>
       <ContactSidebar />
-      {/* Si el contacto seleccionado no existe, muestro un mensaje si no, muestro el contacto */}
-      {
-        ! contact_selected 
+
+      {!contact_selected
         ? <div>
-            <h1>El contacto seleccionado no existe</h1>
+          <h1>El contacto seleccionado no existe</h1>
         </div>
-        : <div>
-          <h1>
-            El contacto seleccionado es: {contact_selected.name  }
-          </h1>
-          <div>
-            {
-              contact_selected.messages.map(message => {
-                return (
-                  <div key={message.id}>
-                    {
-                      message.send_by_me
-                      ? <h3>enviado por mi</h3>
-                      : <h3>Enviado por: {contact_selected.name}</h3>
-                    }
-                    <p>{message.text}</p>
-                    <span>{message.time}</span>
-                    <hr />
-                  </div>
-                )
-            })}
+
+        : <div className='home_chat_contact'>
+
+
+          <div className='home_chat_header'>
+            <img
+              src={contact_selected.profile_picture}
+              alt={contact_selected.name}
+              onClick={() => setShowInfo(true)}
+              style={{ cursor: 'pointer' }}
+            />
+
+            <div className='home_chat_header_info'>
+              <span>{contact_selected.name}</span>
+              <span>{contact_selected.last_time_connection}</span>
+            </div>
+            <Link to='/' className='volver'>Volver a contactos</Link>
           </div>
+          {showInfo && (
+            <InfoContact
+              contact={contact_selected}
+              onClose={() => setShowInfo(false)}
+            />
+          )}
+          <div className='chat_contact'>
+            {contact_selected.messages.map(message => (
+              <div
+                key={message.id}
+                className={`message ${message.send_by_me ? "sent" : "received"}`}
+              >
+                <p>{message.text}</p>
+                <span className='message_time'>{message.time}</span>
+              </div>
+            ))}
+          </div>
+
           <form>
             <textarea placeholder='Escribe un mensaje...' />
             <button type='submit'>Enviar</button>
           </form>
+
         </div>
       }
-      
     </div>
   )
 }

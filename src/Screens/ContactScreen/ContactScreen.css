@@ -1,0 +1,197 @@
+/*/
+.home_chat_contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: lightblue;
+}*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+/* CONTENEDOR GENERAL */
+.home_screen {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-color: #f0f2f5;
+}
+
+/* ZONA DE CHAT */
+.home_chat_contact {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #efeae2;
+    background-image: url("https://web.whatsapp.com/img/bg-chat-tile-light_a4be8e.png");
+    background-repeat: repeat;
+}
+
+/* HEADER */
+.home_chat_header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid #e9edef;
+    padding: 10px 16px;
+    height: 59px;
+    flex-shrink: 0;
+}
+.home_chat_header .volver{
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #00a884;
+    text-decoration: none;
+    ; /* Oculta el enlace en pantallas grandes */
+}
+
+.home_chat_header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.home_chat_header_info {
+    display: flex;
+    flex-direction: column;
+}
+
+.home_chat_header_info span:first-child {
+    font-weight: 600;
+    font-size: 15px;
+    color: #111b21;
+}
+
+.home_chat_header_info span:last-child {
+    font-size: 12px;
+    color: #667781;
+}
+
+/* ÁREA DE MENSAJES */
+.chat_contact {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 40px;
+    gap: 4px;
+}
+
+.chat_contact::-webkit-scrollbar {
+    width: 6px;
+}
+.chat_contact::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+/* BURBUJAS */
+.message {
+    max-width: 65%;
+    padding: 6px 12px 8px 12px;
+    border-radius: 7.5px;
+    font-size: 14.2px;
+    display: flex;
+    flex-direction: column;
+    line-height: 19px;
+    word-wrap: break-word;
+    box-shadow: 0 1px 0.5px rgba(11, 20, 26, 0.13);
+}
+
+.message p {
+    margin: 0;
+    color: #111b21;
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: #d9fdd3;
+    border-radius: 7.5px 0px 7.5px 7.5px;
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #ffffff;
+    border-radius: 0px 7.5px 7.5px 7.5px;
+}
+
+.message_time {
+    font-size: 11px;
+    color: #667781;
+    align-self: flex-end;
+    margin-top: 4px;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+/* FORMULARIO */
+.home_chat_contact form {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: transparent;
+    border-top: 1px solid #e9edef;
+    gap: 8px;
+    flex-shrink: 0;
+    min-height: 62px;
+}
+
+.home_chat_contact textarea {
+    flex: 1;
+    resize: none;
+    padding: 9px 15px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    font-size: 15px;
+    line-height: 20px;
+    max-height: 100px;
+    overflow-y: auto;
+    color: #111b21;
+}
+
+.home_chat_contact textarea::placeholder {
+    color: #8696a0;
+}
+
+.home_chat_contact button {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background-color: #00a884;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.home_chat_contact button:hover {
+    background-color: #017561;
+}
