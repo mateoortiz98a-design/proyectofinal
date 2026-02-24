@@ -1,9 +1,13 @@
 import React from 'react'
 import ContactSidebar from '../../Components/ContactSidebar/ContactSidebar'
 import './HomeScreen.css'
+import MenuSidebar from '../../Components/menuSidebar/menuSidebar'
+
+
 export default function HomeScreen() {
   return (
     <div className='home_screen'>
+      <MenuSidebar/>
       <ContactSidebar/>
      
      <div className='home_chat'>

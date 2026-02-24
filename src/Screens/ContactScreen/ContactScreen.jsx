@@ -5,6 +5,7 @@ import { ContactsContext } from '../../Context/ContactsContext'
 import './ContactScreen.css'
 import { useState } from 'react'
 import InfoContact from '../../Components/InfoContact/infoContact'
+import MenuSidebar from '../../Components/menuSidebar/menuSidebar'
 
 export default function ContactScreen() {
   const { contacts } = useContext(ContactsContext)
@@ -17,6 +18,7 @@ export default function ContactScreen() {
 
   return (
     <div className='home_screen'>
+      <MenuSidebar/>
       <ContactSidebar />
 
       {!contact_selected
