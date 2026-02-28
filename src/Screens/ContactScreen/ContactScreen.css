@@ -1,34 +1,13 @@
-/*/
-.home_chat_contact{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: lightblue;
-}*/
+/* ══════════════════════════════════════
+   ContactScreen.css
+══════════════════════════════════════ */
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+/* Desktop: ocultar botón volver mobile */
+.mobile_back_btn {
+    display: none;
 }
 
-body {
-    overflow: hidden;
-}
-
-/* CONTENEDOR GENERAL */
-.home_screen {
-    display: flex;
-    height: 100vh;
-    width: 100%;
-    background-color: #f0f2f5;
-}
-
-/* ZONA DE CHAT */
+/* ── ZONA DE CHAT ── */
 .home_chat_contact {
     display: flex;
     flex-direction: column;
@@ -40,7 +19,7 @@ body {
     background-repeat: repeat;
 }
 
-/* HEADER */
+/* ── HEADER ── */
 .home_chat_header {
     position: relative;
     display: flex;
@@ -50,8 +29,10 @@ body {
     padding: 10px 16px;
     height: 59px;
     flex-shrink: 0;
+    gap: 10px;
 }
-.home_chat_header .volver{
+
+.home_chat_header .volver {
     position: absolute;
     right: 16px;
     top: 50%;
@@ -59,7 +40,6 @@ body {
     font-size: 14px;
     color: #00a884;
     text-decoration: none;
-    ; /* Oculta el enlace en pantallas grandes */
 }
 
 .home_chat_header img {
@@ -67,7 +47,6 @@ body {
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 12px;
     flex-shrink: 0;
 }
 
@@ -87,7 +66,7 @@ body {
     color: #667781;
 }
 
-/* ÁREA DE MENSAJES */
+/* ── ÁREA DE MENSAJES ── */
 .chat_contact {
     flex: 1;
     overflow-y: auto;
@@ -100,12 +79,13 @@ body {
 .chat_contact::-webkit-scrollbar {
     width: 6px;
 }
+
 .chat_contact::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
 }
 
-/* BURBUJAS */
+/* ── BURBUJAS ── */
 .message {
     max-width: 65%;
     padding: 6px 12px 8px 12px;
@@ -144,12 +124,12 @@ body {
     white-space: nowrap;
 }
 
-/* FORMULARIO */
+/* ── FORMULARIO ── */
 .home_chat_contact form {
     display: flex;
     align-items: center;
     padding: 8px 16px;
-    background-color: transparent;
+    background-color: #f0f2f5;
     border-top: 1px solid #e9edef;
     gap: 8px;
     flex-shrink: 0;
@@ -169,13 +149,14 @@ body {
     max-height: 100px;
     overflow-y: auto;
     color: #111b21;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 .home_chat_contact textarea::placeholder {
     color: #8696a0;
 }
 
-.home_chat_contact button {
+.home_chat_contact button[type="submit"] {
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -192,6 +173,100 @@ body {
     transition: background-color 0.2s ease;
 }
 
-.home_chat_contact button:hover {
+.home_chat_contact button[type="submit"]:hover {
     background-color: #017561;
+}
+
+/* ══════════════════════════════════════
+   MOBILE  (< 768px)
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    .home_screen {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: unset !important;
+    }
+
+    /* Chat fuera de pantalla por defecto */
+    .home_chat_contact {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100% !important;
+        height: 100dvh !important;
+        z-index: 10000;
+        transform: translateX(100%);
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Contacto seleccionado → slide in */
+    .home_chat_contact--visible {
+        transform: translateX(0) !important;
+    }
+
+    /* Ocultar menu mobile cuando el chat está abierto */
+    .home_chat_contact--visible ~ .menu_mobile,
+    body.chat-open .menu_mobile {
+        display: none !important;
+    }
+
+    /* Botón volver mobile */
+    .mobile_back_btn {
+        display: flex;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: none;
+        background: none;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        color: #00a884;
+        flex-shrink: 0;
+    }
+
+    /* Ocultar link "Volver" de desktop */
+    .home_chat_header .volver {
+        display: none;
+    }
+
+    .home_chat_header {
+        height: 56px;
+        padding: 0 12px 0 4px;
+    }
+
+    /* Formulario fijo al fondo */
+    .home_chat_contact form {
+        position: sticky;
+        bottom: 0;
+        background-color: #f0f2f5;
+        border-top: 1px solid #e9edef;
+        flex-shrink: 0;
+        z-index: 10;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+    .chat_contact {
+        padding: 8px 12px;
+        scrollbar-width: none;
+    }
+
+    .chat_contact::-webkit-scrollbar {
+        display: none;
+    }
+
+    .home_chat {
+        display: none !important;
+    }
 }
