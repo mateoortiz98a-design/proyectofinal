@@ -1,3 +1,11 @@
+
+html, body, #root {
+    height: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
 /* ============================================================
    RESPONSIVE — WhatsApp Clone
    Breakpoints:
@@ -205,7 +213,7 @@
 
 /* ============================================================
    UTILIDAD: esconde el scrollbar en mobile para un look nativo
-   ============================================================ */
+   ============================================================
 @media (max-width: 600px) {
     .contacts_list::-webkit-scrollbar,
     .chat_contact::-webkit-scrollbar {
